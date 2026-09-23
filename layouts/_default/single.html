@@ -26,11 +26,11 @@
 
                 <div class="post-tags">
                     {{ if ne .Type "page" }}
-                        {{ if gt .Params.tags 0 }}
+                        {{ with .GetTerms "tags" }}
                             <nav class="tags">
                                     <ul class="flat">
-                                        {{ range .Params.tags }}
-                                        <li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+                                        {{ range . }}
+                                        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
                                         {{ end }}
                                     </ul>
                             </nav>
